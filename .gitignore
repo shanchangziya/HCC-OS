@@ -1,0 +1,52 @@
+# Large data and analysis objects
+*.Rdata
+*.RData
+*.rdata
+*.rds
+*.RDS
+*.h5
+*.h5ad
+*.loom
+*.mtx
+*.bam
+*.bai
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+
+# Generated tables and figures
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.svg
+
+# Logs and runtime files
+*.log
+*.out
+*.err
+*.pid
+nohup.out
+logs/
+
+# R/session artifacts
+.Rhistory
+.RData
+.Rproj.user/
+
+# Python/runtime cache, if helper scripts are added later
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Keep empty input/output directories
+!data/.gitkeep
+!bulk/.gitkeep
+!results/.gitkeep
