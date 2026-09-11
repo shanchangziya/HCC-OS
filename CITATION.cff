@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated manuscript and this repository."
+title: "HCC-OS: oxidative-stress multi-omics analysis code for hepatocellular carcinoma"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Qianwen
+  - family-names: Yan
+    given-names: Honglin
+  - family-names: Yuan
+    given-names: Jingping
+  - family-names: Wang
+    given-names: Na
+  - family-names: Li
+    given-names: Wenhua
+repository-code: "https://github.com/shanchangziya/HCC-OS"
+abstract: "Code for single-cell, bulk transcriptomic, prognostic modelling, immune, spatial, proteomic, and pathology analyses of oxidative stress in hepatocellular carcinoma."
+keywords:
+  - hepatocellular carcinoma
+  - oxidative stress
+  - single-cell RNA sequencing
+  - survival modelling
+  - multi-omics

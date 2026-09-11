@@ -1,0 +1,34 @@
+{
+  "Hong2022_8gene": {
+    "citation": "Hong J, Cai X. Disease Markers. 2022:6201987.",
+    "doi": "10.1155/2022/6201987",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9484914/",
+    "coefficients": {"G6PD":0.069,"MT3":0.177,"CBX2":0.206,"CDKN2B":0.063,"CCNA2":0.078,"MAPT":0.164,"EZH2":0.248,"SLC7A11":0.213},
+    "source_location": "Results 3.1, explicit risk-score formula",
+    "original_expression_preprocessing": "Not specified sufficiently in main text: exact abundance unit, log transformation and standardization parameters absent. Code available from authors upon request.",
+    "primary_recalculation": "Published coefficients applied to archived log-scale expression; no refitting; labeled harmonized formula implementation rather than exact reproduction.",
+    "sensitivity": "Published coefficients applied after within-cohort gene z-scoring.",
+    "original_cohorts": "TCGA development; ICGC validation. Both overlap current evaluation cohorts.",
+    "reproducibility_status": "Formula complete at reported three-decimal precision; full original preprocessing not reproducible from report."
+  },
+  "Ma2024_TR_OSRG_3gene": {
+    "citation": "Ma H et al. Journal of Hepatocellular Carcinoma. 2024;11.",
+    "doi": "10.2147/JHC.S465592",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11330244/",
+    "coefficients": {"PDGFD":-0.1655,"G6PD":0.2184,"ADAM9":0.2398},
+    "source_location": "Results: Construction of the TR-OSRG Prognostic Signature, explicit formula",
+    "original_expression_preprocessing": "Methods specifies standardized expression across patient samples, but does not give exact standardization formula, abundance unit or transformation.",
+    "primary_recalculation": "Operationalized standardization as within-cohort gene z-scores of archived log-scale expression; published coefficients applied without refitting. Labeled harmonized formula implementation.",
+    "sensitivity": "Published coefficients applied to unstandardized archived log expression; additional TCGA mean/SD transfer sensitivity when complete ICGC expression is available.",
+    "original_cohorts": "TCGA development, GSE104580 TACE response gene discovery, GSE14520-TACE and local 37-patient cohorts validation. General ICGC survival is a setting extension.",
+    "reproducibility_status": "Formula complete at reported four-decimal precision; precise original preprocessing partially unspecified."
+  },
+  "Wang2023_OSRG_7gene": {
+    "citation": "Wang L, Liu X. Frontiers in Genetics. 2023;13:975211.",
+    "doi": "10.3389/fgene.2022.975211",
+    "url": "https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2022.975211/full",
+    "genes": ["BDNF","FASLG","KLF2","MMP9","S100A9","SGCB","TNFRSF1B"],
+    "original_expression_preprocessing": "TCGA normalized log2(FPKM+1) stated in Methods 2.1.",
+    "reproducibility_status": "Not evaluated: exact numeric coefficients not provided in main-text formula. Coefficients were not invented or refitted."
+  }
+}

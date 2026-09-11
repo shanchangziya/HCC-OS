@@ -1,0 +1,8 @@
+output_file,source,purpose
+GSE202642_usage_summary.csv,single_cell/data/processed/discovery_validation_ready.csv,Requested discovery-cohort usage summary
+GSE149614_usage_summary.csv,single_cell/data/processed/GSE149614_all_cells_embedding.csv; GSE149614_primary_malignant_embedding.csv,Requested validation-cohort usage summary
+GSE149614_all_cells_UMAP_metadata.csv,single_cell/data/processed/GSE149614_all_cells_embedding.csv,Panel A source data
+GSE149614_OS_score_metadata.csv,single_cell/data/processed/GSE149614_primary_malignant_embedding.csv; validation_primary_scores.csv; validation_de_novo_NMF_scores.csv,Panels B/C source data and requested OS-score metadata
+GSE149614_MP_similarity_to_discovery.csv,single_cell/data/processed/cross_cohort_NMF_overlap.csv,Requested complete MP correspondence table
+GSE149614_NMF_program_enrichment.csv,validation_de_novo_NMF_genes.csv; NMF_eligible_gene_universe.csv; msigdbr 2026.1.Hs,Requested complete ORA source data
+GSE149614_panel_D_pathways.csv,GSE149614_NMF_program_enrichment.csv,Panel D display subset

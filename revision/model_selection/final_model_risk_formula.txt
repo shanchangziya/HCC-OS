@@ -1,0 +1,10 @@
+EXPLICIT LOCKED PLS-COX RISK-SCORE CALCULATION
+K = 9 latent components; orientation = 1.
+For each locked model gene g, cap expression x_g at the stored TCGA q01/q99 bounds and replace missing values with the stored TCGA mean.
+Standardize each processed gene: z_g = (x_g - pls_center_g) / pls_scale_g.
+Calculate latent components: t_k = sum_g(z_g * W_gk).
+Calculate risk score: risk = orientation * sum_k[beta_k * (t_k - cox_reference_mean_k)].
+No cohort-specific re-estimation, re-scaling, or exponential transformation is applied.
+Parameters: data/processed/final_model_feature_preprocessing.csv; final_model_pls_component_weights.csv; final_model_pls_cox_coefficients.csv.
+Formula-versus-serialized prediction max absolute differences: TCGA=1.776357e-15; ICGC=2.664535e-15.
+Locked model SHA256 (unchanged): 72f298e47f4abcf9494fa462cd935c80934da623715d04bf1bf32fc7707504ba

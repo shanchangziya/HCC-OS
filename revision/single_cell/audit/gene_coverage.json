@@ -1,0 +1,19 @@
+{
+  "ROS_genes_total": 49,
+  "ROS_genes_available": 47,
+  "ROS_missing": [
+    "PTPA",
+    "SELENOS"
+  ],
+  "MP4_genes_total": 58,
+  "MP4_genes_available": 57,
+  "MP4_missing": [
+    "ATP5MC1"
+  ],
+  "MP4_ROS_overlap": [
+    "ATOX1",
+    "TXN"
+  ],
+  "MP4_without_ROS_genes_total": 56,
+  "MP4_without_ROS_genes_available": 55
+}

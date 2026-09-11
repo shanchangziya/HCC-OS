@@ -1,0 +1,4 @@
+"gene","input_order","in_Hallmark_ROS_v7_0","in_frozen_discovery_MP4","p_val","avg_log2FC","pct.1","pct.2","p_val_adj","detect_gap","marker_rank_avg_log2FC","marker_rank_detect_gap","marker_rank_adjusted_p","rel.inf","model_importance_rank","selected_for_follow_up","selection_basis"
+"NQO1",1,TRUE,FALSE,2.54000340835005e-106,1.51552022840541,0.844,0.088,7.05562146771476e-102,0.756,1,1,1,0.520258869131657,56,TRUE,"Largest descriptive marker effect and detection gap among the OSARS-ROS overlap"
+"TXNRD1",64,TRUE,FALSE,1.65427909475556e-69,0.561921469355243,0.794,0.162,4.59525646941199e-65,0.632,144,354,296,5.46694069077499,1,FALSE,"Not selected for follow-up"
+"PRDX1",117,TRUE,FALSE,9.29128988145288e-33,0.549125290323327,0.992,0.564,2.58093450326998e-28,0.428,153,950,764,0.589671626156643,50,FALSE,"Not selected for follow-up"

@@ -1,0 +1,31 @@
+args<-commandArgs(trailingOnly=TRUE)
+script_arg<-grep('^--file=',commandArgs(trailingOnly=FALSE),value=TRUE)[1]
+module_dir<-normalizePath(file.path(dirname(sub('^--file=','',script_arg)),'..'),mustWork=FALSE)
+root<-if(length(args)>=1)args[1] else Sys.getenv('HCC_OS_EXTERNAL_DATA_ROOT')
+out<-if(length(args)>=2)args[2] else module_dir
+if(!nzchar(root))stop('Provide the external cohort data root as argument 1 or HCC_OS_EXTERNAL_DATA_ROOT.')
+dir.create(file.path(out,'data/raw'),recursive=TRUE,showWarnings=FALSE)
+dir.create(file.path(out,'logs'),recursive=TRUE,showWarnings=FALSE)
+q<-new.env();load(file.path(out,'data/raw/QWEN0208.Rdata'),envir=q)
+e<-new.env();load(file.path(root,'RAN-SEQ肿瘤样本和临床数据/exp3_surv3.Rdata'),envir=e)
+x<-log2(as.matrix(e$exp3)+1)
+d<-q$list_train_vali_Data[[2]]
+stopifnot(setequal(d$ID,colnames(x)))
+delta<-max(abs(t(x[q$g,d$ID])-as.matrix(d[,q$g])))
+stopifnot(delta < 1e-10)
+stopifnot(all(e$surv3[d$ID,'event']==d$OS),all(e$surv3[d$ID,'time']==d$OS.time))
+con<-gzfile(file.path(out,'data/raw/ICGC_full_expression_logscale.csv.gz'),'w')
+write.csv(data.frame(gene=rownames(x),x,check.names=FALSE),con,row.names=FALSE);close(con)
+write.csv(data.frame(ID=rownames(e$surv3),e$surv3),file.path(out,'data/raw/ICGC_clinical_source.csv'),row.names=FALSE)
+meta<-read.delim(file.path(root,'肿瘤样本和正常样本/ICGC-LIRI/cliincal.txt'),check.names=FALSE)
+write.csv(meta,file.path(out,'data/raw/ICGC_specimen_metadata.csv'),row.names=FALSE)
+c<-new.env();load(file.path(root,'蛋白质组肿瘤样本和临床数据/肿瘤和临床数据/CPTACLIHCtumor.Rdata'),envir=c)
+write.csv(data.frame(ID=rownames(c$meta),c$meta,check.names=FALSE),file.path(out,'data/raw/CPTAC_clinical_source.csv'),row.names=FALSE)
+a<-new.env();load(file.path(out,'data/raw/genes_up_sig.Rdata'),envir=a)
+b<-new.env();load(file.path(root,'RAN-SEQ肿瘤样本和临床数据/exp2_surv2.Rdata'),envir=b)
+t<-new.env();load(file.path(root,'RAN-SEQ肿瘤样本和临床数据/exp1_surv1.Rdata'),envir=t)
+g2<-Reduce(intersect,list(a$genes_up_sig,rownames(t$exp1),rownames(b$exp2),rownames(x)))
+stopifnot(identical(g2,q$g))
+writeLines(c(paste('ICGC candidate expression max abs difference after log2(FPKM+1):',delta),
+ paste('Reconstructed 657 markers intersect TCGA/GEO/ICGC:',length(g2)),paste('Equal to archived 448:',setequal(g2,q$g)),
+ paste('Same ordered vector:',identical(g2,q$g))),file.path(out,'logs/source_alignment_checks.txt'))

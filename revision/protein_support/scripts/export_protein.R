@@ -1,0 +1,23 @@
+a<-commandArgs(trailingOnly=TRUE)
+e<-new.env();load(a[1],envir=e)
+l<-new.env();load(a[2],envir=l)
+w<-read.csv(a[3]);saved<-read.csv(a[4]);out<-a[5]
+stopifnot("NQO1"%in%rownames(e$exp),identical(colnames(e$exp),rownames(e$meta)))
+all<-data.frame(sample_id=sub(" .*","",colnames(l$normalizeData)),
+                normalized_NQO1=as.numeric(l$normalizeData["NQO1",]))
+write.csv(all,file.path(out,"normalized_nqo1_all_samples.csv"),row.names=FALSE)
+g<-intersect(w$Gene,rownames(e$exp));stopifnot(length(g)==123)
+z<-t(scale(t(as.matrix(e$exp[g,]))))
+score<-as.numeric(crossprod(w$Weight[match(g,w$Gene)],z))
+saved<-saved[match(colnames(e$exp),saved$Sample),]
+stopifnot(max(abs(score-saved$OSARS_protein))<1e-8)
+nqo1<-as.numeric(e$exp["NQO1",])
+stopifnot(all.equal(nqo1,all$normalized_NQO1[match(colnames(e$exp),all$sample_id)]))
+component<-as.numeric(z["NQO1",])*w$Weight[match("NQO1",w$Gene)]
+d<-data.frame(sample_id=colnames(e$exp),NQO1=nqo1,NQO1_z=as.numeric(scale(nqo1)),
+              protein_OSARS_full=score,NQO1_self_component=component,
+              protein_OSARS_without_NQO1=score-component,e$meta,check.names=FALSE)
+write.csv(d,file.path(out,"nqo1_survival_surrogate.csv"),row.names=FALSE)
+capture.output(list(n_matched_proteins=length(g),surrogate_max_difference=max(abs(score-saved$OSARS_protein)),
+                    NQO1_weight=w$Weight[match("NQO1",w$Gene)],NQO1_mean=mean(nqo1),NQO1_sd=sd(nqo1),
+                    sessionInfo=sessionInfo()),file=file.path(out,"export_QA.txt"))

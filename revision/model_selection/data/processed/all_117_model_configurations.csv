@@ -1,0 +1,118 @@
+"configuration_id","configuration","mode","single_ml","double_ml1","double_ml2","alpha","direction","stage_count"
+1,"RSF","single","RSF",NA,NA,NA,NA,1
+2,"RSF + CoxBoost","double",NA,"RSF","CoxBoost",NA,NA,2
+3,"RSF + Enet[α=0.1]","double",NA,"RSF","Enet",0.1,NA,2
+4,"RSF + Enet[α=0.2]","double",NA,"RSF","Enet",0.2,NA,2
+5,"RSF + Enet[α=0.3]","double",NA,"RSF","Enet",0.3,NA,2
+6,"RSF + Enet[α=0.4]","double",NA,"RSF","Enet",0.4,NA,2
+7,"RSF + Enet[α=0.5]","double",NA,"RSF","Enet",0.5,NA,2
+8,"RSF + Enet[α=0.6]","double",NA,"RSF","Enet",0.6,NA,2
+9,"RSF + Enet[α=0.7]","double",NA,"RSF","Enet",0.7,NA,2
+10,"RSF + Enet[α=0.8]","double",NA,"RSF","Enet",0.8,NA,2
+11,"RSF + Enet[α=0.9]","double",NA,"RSF","Enet",0.9,NA,2
+12,"RSF + GBM","double",NA,"RSF","GBM",NA,NA,2
+13,"RSF + Lasso","double",NA,"RSF","Lasso",NA,NA,2
+14,"RSF + plsRcox","double",NA,"RSF","plsRcox",NA,NA,2
+15,"RSF + Ridge","double",NA,"RSF","Ridge",NA,NA,2
+16,"RSF + StepCox[both]","double",NA,"RSF","StepCox",NA,"both",2
+17,"RSF + StepCox[backward]","double",NA,"RSF","StepCox",NA,"backward",2
+18,"RSF + StepCox[forward]","double",NA,"RSF","StepCox",NA,"forward",2
+19,"RSF + SuperPC","double",NA,"RSF","superpc",NA,NA,2
+20,"RSF + survival-SVM","double",NA,"RSF","survivalsvm",NA,NA,2
+21,"Enet[α=0.1]","single","Enet",NA,NA,0.1,NA,1
+22,"Enet[α=0.2]","single","Enet",NA,NA,0.2,NA,1
+23,"Enet[α=0.3]","single","Enet",NA,NA,0.3,NA,1
+24,"Enet[α=0.4]","single","Enet",NA,NA,0.4,NA,1
+25,"Enet[α=0.5]","single","Enet",NA,NA,0.5,NA,1
+26,"Enet[α=0.6]","single","Enet",NA,NA,0.6,NA,1
+27,"Enet[α=0.7]","single","Enet",NA,NA,0.7,NA,1
+28,"Enet[α=0.8]","single","Enet",NA,NA,0.8,NA,1
+29,"Enet[α=0.9]","single","Enet",NA,NA,0.9,NA,1
+30,"StepCox[both]","single","StepCox",NA,NA,NA,"both",1
+31,"StepCox[backward]","single","StepCox",NA,NA,NA,"backward",1
+32,"StepCox[forward]","single","StepCox",NA,NA,NA,"forward",1
+33,"StepCox[both] + CoxBoost","double",NA,"StepCox","CoxBoost",NA,"both",2
+34,"StepCox[both] + Enet[α=0.1]","double",NA,"StepCox","Enet",0.1,"both",2
+35,"StepCox[both] + Enet[α=0.2]","double",NA,"StepCox","Enet",0.2,"both",2
+36,"StepCox[both] + Enet[α=0.3]","double",NA,"StepCox","Enet",0.3,"both",2
+37,"StepCox[both] + Enet[α=0.4]","double",NA,"StepCox","Enet",0.4,"both",2
+38,"StepCox[both] + Enet[α=0.5]","double",NA,"StepCox","Enet",0.5,"both",2
+39,"StepCox[both] + Enet[α=0.6]","double",NA,"StepCox","Enet",0.6,"both",2
+40,"StepCox[both] + Enet[α=0.7]","double",NA,"StepCox","Enet",0.7,"both",2
+41,"StepCox[both] + Enet[α=0.8]","double",NA,"StepCox","Enet",0.8,"both",2
+42,"StepCox[both] + Enet[α=0.9]","double",NA,"StepCox","Enet",0.9,"both",2
+43,"StepCox[both] + GBM","double",NA,"StepCox","GBM",NA,"both",2
+44,"StepCox[both] + Lasso","double",NA,"StepCox","Lasso",NA,"both",2
+45,"StepCox[both] + plsRcox","double",NA,"StepCox","plsRcox",NA,"both",2
+46,"StepCox[both] + Ridge","double",NA,"StepCox","Ridge",NA,"both",2
+47,"StepCox[both] + RSF","double",NA,"StepCox","RSF",NA,"both",2
+48,"StepCox[both] + SuperPC","double",NA,"StepCox","superpc",NA,"both",2
+49,"StepCox[both] + survival-SVM","double",NA,"StepCox","survivalsvm",NA,"both",2
+50,"StepCox[backward] + CoxBoost","double",NA,"StepCox","CoxBoost",NA,"backward",2
+51,"StepCox[backward] + Enet[α=0.1]","double",NA,"StepCox","Enet",0.1,"backward",2
+52,"StepCox[backward] + Enet[α=0.2]","double",NA,"StepCox","Enet",0.2,"backward",2
+53,"StepCox[backward] + Enet[α=0.3]","double",NA,"StepCox","Enet",0.3,"backward",2
+54,"StepCox[backward] + Enet[α=0.4]","double",NA,"StepCox","Enet",0.4,"backward",2
+55,"StepCox[backward] + Enet[α=0.5]","double",NA,"StepCox","Enet",0.5,"backward",2
+56,"StepCox[backward] + Enet[α=0.6]","double",NA,"StepCox","Enet",0.6,"backward",2
+57,"StepCox[backward] + Enet[α=0.7]","double",NA,"StepCox","Enet",0.7,"backward",2
+58,"StepCox[backward] + Enet[α=0.8]","double",NA,"StepCox","Enet",0.8,"backward",2
+59,"StepCox[backward] + Enet[α=0.9]","double",NA,"StepCox","Enet",0.9,"backward",2
+60,"StepCox[backward] + GBM","double",NA,"StepCox","GBM",NA,"backward",2
+61,"StepCox[backward] + Lasso","double",NA,"StepCox","Lasso",NA,"backward",2
+62,"StepCox[backward] + plsRcox","double",NA,"StepCox","plsRcox",NA,"backward",2
+63,"StepCox[backward] + Ridge","double",NA,"StepCox","Ridge",NA,"backward",2
+64,"StepCox[backward] + RSF","double",NA,"StepCox","RSF",NA,"backward",2
+65,"StepCox[backward] + SuperPC","double",NA,"StepCox","superpc",NA,"backward",2
+66,"StepCox[backward] + survival-SVM","double",NA,"StepCox","survivalsvm",NA,"backward",2
+67,"StepCox[forward] + CoxBoost","double",NA,"StepCox","CoxBoost",NA,"forward",2
+68,"StepCox[forward] + Enet[α=0.1]","double",NA,"StepCox","Enet",0.1,"forward",2
+69,"StepCox[forward] + Enet[α=0.2]","double",NA,"StepCox","Enet",0.2,"forward",2
+70,"StepCox[forward] + Enet[α=0.3]","double",NA,"StepCox","Enet",0.3,"forward",2
+71,"StepCox[forward] + Enet[α=0.4]","double",NA,"StepCox","Enet",0.4,"forward",2
+72,"StepCox[forward] + Enet[α=0.5]","double",NA,"StepCox","Enet",0.5,"forward",2
+73,"StepCox[forward] + Enet[α=0.6]","double",NA,"StepCox","Enet",0.6,"forward",2
+74,"StepCox[forward] + Enet[α=0.7]","double",NA,"StepCox","Enet",0.7,"forward",2
+75,"StepCox[forward] + Enet[α=0.8]","double",NA,"StepCox","Enet",0.8,"forward",2
+76,"StepCox[forward] + Enet[α=0.9]","double",NA,"StepCox","Enet",0.9,"forward",2
+77,"StepCox[forward] + GBM","double",NA,"StepCox","GBM",NA,"forward",2
+78,"StepCox[forward] + Lasso","double",NA,"StepCox","Lasso",NA,"forward",2
+79,"StepCox[forward] + plsRcox","double",NA,"StepCox","plsRcox",NA,"forward",2
+80,"StepCox[forward] + Ridge","double",NA,"StepCox","Ridge",NA,"forward",2
+81,"StepCox[forward] + RSF","double",NA,"StepCox","RSF",NA,"forward",2
+82,"StepCox[forward] + SuperPC","double",NA,"StepCox","superpc",NA,"forward",2
+83,"StepCox[forward] + survival-SVM","double",NA,"StepCox","survivalsvm",NA,"forward",2
+84,"CoxBoost","single","CoxBoost",NA,NA,NA,NA,1
+85,"CoxBoost + Enet[α=0.1]","double",NA,"CoxBoost","Enet",0.1,NA,2
+86,"CoxBoost + Enet[α=0.2]","double",NA,"CoxBoost","Enet",0.2,NA,2
+87,"CoxBoost + Enet[α=0.3]","double",NA,"CoxBoost","Enet",0.3,NA,2
+88,"CoxBoost + Enet[α=0.4]","double",NA,"CoxBoost","Enet",0.4,NA,2
+89,"CoxBoost + Enet[α=0.5]","double",NA,"CoxBoost","Enet",0.5,NA,2
+90,"CoxBoost + Enet[α=0.6]","double",NA,"CoxBoost","Enet",0.6,NA,2
+91,"CoxBoost + Enet[α=0.7]","double",NA,"CoxBoost","Enet",0.7,NA,2
+92,"CoxBoost + Enet[α=0.8]","double",NA,"CoxBoost","Enet",0.8,NA,2
+93,"CoxBoost + Enet[α=0.9]","double",NA,"CoxBoost","Enet",0.9,NA,2
+94,"CoxBoost + GBM","double",NA,"CoxBoost","GBM",NA,NA,2
+95,"CoxBoost + Lasso","double",NA,"CoxBoost","Lasso",NA,NA,2
+96,"CoxBoost + plsRcox","double",NA,"CoxBoost","plsRcox",NA,NA,2
+97,"CoxBoost + Ridge","double",NA,"CoxBoost","Ridge",NA,NA,2
+98,"CoxBoost + StepCox[both]","double",NA,"CoxBoost","StepCox",NA,"both",2
+99,"CoxBoost + StepCox[backward]","double",NA,"CoxBoost","StepCox",NA,"backward",2
+100,"CoxBoost + StepCox[forward]","double",NA,"CoxBoost","StepCox",NA,"forward",2
+101,"CoxBoost + SuperPC","double",NA,"CoxBoost","superpc",NA,NA,2
+102,"CoxBoost + survival-SVM","double",NA,"CoxBoost","survivalsvm",NA,NA,2
+103,"plsRcox","single","plsRcox",NA,NA,NA,NA,1
+104,"SuperPC","single","superpc",NA,NA,NA,NA,1
+105,"GBM","single","GBM",NA,NA,NA,NA,1
+106,"survival - SVM","single","survivalsvm",NA,NA,NA,NA,1
+107,"Ridge","single","Ridge",NA,NA,NA,NA,1
+108,"Lasso","single","Lasso",NA,NA,NA,NA,1
+109,"Lasso + CoxBoost","double",NA,"Lasso","CoxBoost",NA,NA,2
+110,"Lasso + GBM","double",NA,"Lasso","GBM",NA,NA,2
+111,"Lasso + plsRcox","double",NA,"Lasso","plsRcox",NA,NA,2
+112,"Lasso + RSF","double",NA,"Lasso","RSF",NA,NA,2
+113,"Lasso + StepCox[both]","double",NA,"Lasso","StepCox",NA,"both",2
+114,"Lasso + StepCox[backward]","double",NA,"Lasso","StepCox",NA,"backward",2
+115,"Lasso + StepCox[forward]","double",NA,"Lasso","StepCox",NA,"forward",2
+116,"Lasso + SuperPC","double",NA,"Lasso","superpc",NA,NA,2
+117,"Lasso + survival-SVM","double",NA,"Lasso","survivalsvm",NA,NA,2

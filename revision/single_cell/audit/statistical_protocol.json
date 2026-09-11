@@ -1,0 +1,40 @@
+{
+  "bootstrap_unit": "patient in validation; tissue sample in discovery",
+  "bootstrap_replicates": 5000,
+  "seed": 20260905,
+  "minimum_cells_per_group_per_unit": 5,
+  "primary_group_definition": "cohort-wide 80th percentile of composite OS score",
+  "sensitivity_group_definitions": [
+    "OS_high_top20",
+    "OS_high_within_sample_top20"
+  ],
+  "primary_program": "frozen discovery MP4",
+  "controls": "MP4 excluding ROS-overlap genes; partial rank correlation controlling library size and mitochondrial percentage",
+  "historical_discovery_labels": "retained in OS_group_valley; top20 labels are a new sensitivity/revision definition and must not be described as the historical model derivation labels",
+  "discovery_definition_audit": [
+    {
+      "metric": "n_cells",
+      "value": 10413.0
+    },
+    {
+      "metric": "n_tissue_samples",
+      "value": 11.0
+    },
+    {
+      "metric": "composite_rederived_max_abs_diff",
+      "value": 0.0
+    },
+    {
+      "metric": "top20_cutoff",
+      "value": 1.01733225325955
+    },
+    {
+      "metric": "n_top20",
+      "value": 2083.0
+    },
+    {
+      "metric": "n_historical_valley",
+      "value": 2437.0
+    }
+  ]
+}

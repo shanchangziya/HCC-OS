@@ -1,0 +1,10 @@
+numpy==2.5.2
+pandas==2.3.3
+scipy==1.18.1
+lifelines==0.30.3
+scikit-learn==1.9.0
+scikit-survival==0.28.0
+matplotlib==3.11.1
+cloudpickle==3.1.2
+pyreadr==0.5.6
+rdata==1.1.0

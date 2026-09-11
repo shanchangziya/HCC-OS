@@ -1,0 +1,158 @@
+gene_set,gene
+Frozen discovery MP4 state,A1BG
+Frozen discovery MP4 state,AGT
+Frozen discovery MP4 state,AHSG
+Frozen discovery MP4 state,ALDOB
+Frozen discovery MP4 state,AMBP
+Frozen discovery MP4 state,APCS
+Frozen discovery MP4 state,APOB
+Frozen discovery MP4 state,APOH
+Frozen discovery MP4 state,ATOX1
+Frozen discovery MP4 state,ATP5MC1
+Frozen discovery MP4 state,C3
+Frozen discovery MP4 state,CD74
+Frozen discovery MP4 state,CES1
+Frozen discovery MP4 state,CFB
+Frozen discovery MP4 state,CHCHD10
+Frozen discovery MP4 state,CLU
+Frozen discovery MP4 state,COX7A2
+Frozen discovery MP4 state,CP
+Frozen discovery MP4 state,DDT
+Frozen discovery MP4 state,DEFB1
+Frozen discovery MP4 state,ETFB
+Frozen discovery MP4 state,FABP1
+Frozen discovery MP4 state,FGA
+Frozen discovery MP4 state,FGB
+Frozen discovery MP4 state,FGG
+Frozen discovery MP4 state,FGL1
+Frozen discovery MP4 state,GC
+Frozen discovery MP4 state,GSTA1
+Frozen discovery MP4 state,HINT1
+Frozen discovery MP4 state,HP
+Frozen discovery MP4 state,HRG
+Frozen discovery MP4 state,HULC
+Frozen discovery MP4 state,IFITM3
+Frozen discovery MP4 state,ITIH2
+Frozen discovery MP4 state,NDUFA4
+Frozen discovery MP4 state,NME2
+Frozen discovery MP4 state,NUPR1
+Frozen discovery MP4 state,ORM1
+Frozen discovery MP4 state,ORM2
+Frozen discovery MP4 state,POLR2L
+Frozen discovery MP4 state,PRAP1
+Frozen discovery MP4 state,RARRES2
+Frozen discovery MP4 state,RBP4
+Frozen discovery MP4 state,RPL23A
+Frozen discovery MP4 state,RPL39
+Frozen discovery MP4 state,RPL7A
+Frozen discovery MP4 state,RPS10
+Frozen discovery MP4 state,RPS13
+Frozen discovery MP4 state,RPS21
+Frozen discovery MP4 state,RPS5
+Frozen discovery MP4 state,SAA4
+Frozen discovery MP4 state,SERPINA3
+Frozen discovery MP4 state,SERPINC1
+Frozen discovery MP4 state,SERPING1
+Frozen discovery MP4 state,TF
+Frozen discovery MP4 state,TTR
+Frozen discovery MP4 state,TXN
+Frozen discovery MP4 state,VTN
+Frozen discovery MP4 state excluding ROS and OSARS features,A1BG
+Frozen discovery MP4 state excluding ROS and OSARS features,AGT
+Frozen discovery MP4 state excluding ROS and OSARS features,AHSG
+Frozen discovery MP4 state excluding ROS and OSARS features,ALDOB
+Frozen discovery MP4 state excluding ROS and OSARS features,AMBP
+Frozen discovery MP4 state excluding ROS and OSARS features,APOB
+Frozen discovery MP4 state excluding ROS and OSARS features,APOH
+Frozen discovery MP4 state excluding ROS and OSARS features,ATP5MC1
+Frozen discovery MP4 state excluding ROS and OSARS features,C3
+Frozen discovery MP4 state excluding ROS and OSARS features,CD74
+Frozen discovery MP4 state excluding ROS and OSARS features,CES1
+Frozen discovery MP4 state excluding ROS and OSARS features,CFB
+Frozen discovery MP4 state excluding ROS and OSARS features,CHCHD10
+Frozen discovery MP4 state excluding ROS and OSARS features,CLU
+Frozen discovery MP4 state excluding ROS and OSARS features,COX7A2
+Frozen discovery MP4 state excluding ROS and OSARS features,CP
+Frozen discovery MP4 state excluding ROS and OSARS features,DDT
+Frozen discovery MP4 state excluding ROS and OSARS features,DEFB1
+Frozen discovery MP4 state excluding ROS and OSARS features,ETFB
+Frozen discovery MP4 state excluding ROS and OSARS features,FABP1
+Frozen discovery MP4 state excluding ROS and OSARS features,FGA
+Frozen discovery MP4 state excluding ROS and OSARS features,FGB
+Frozen discovery MP4 state excluding ROS and OSARS features,FGG
+Frozen discovery MP4 state excluding ROS and OSARS features,FGL1
+Frozen discovery MP4 state excluding ROS and OSARS features,GSTA1
+Frozen discovery MP4 state excluding ROS and OSARS features,HINT1
+Frozen discovery MP4 state excluding ROS and OSARS features,HP
+Frozen discovery MP4 state excluding ROS and OSARS features,HRG
+Frozen discovery MP4 state excluding ROS and OSARS features,HULC
+Frozen discovery MP4 state excluding ROS and OSARS features,IFITM3
+Frozen discovery MP4 state excluding ROS and OSARS features,NDUFA4
+Frozen discovery MP4 state excluding ROS and OSARS features,NME2
+Frozen discovery MP4 state excluding ROS and OSARS features,NUPR1
+Frozen discovery MP4 state excluding ROS and OSARS features,ORM1
+Frozen discovery MP4 state excluding ROS and OSARS features,ORM2
+Frozen discovery MP4 state excluding ROS and OSARS features,PRAP1
+Frozen discovery MP4 state excluding ROS and OSARS features,RARRES2
+Frozen discovery MP4 state excluding ROS and OSARS features,RPL23A
+Frozen discovery MP4 state excluding ROS and OSARS features,RPL39
+Frozen discovery MP4 state excluding ROS and OSARS features,RPL7A
+Frozen discovery MP4 state excluding ROS and OSARS features,RPS10
+Frozen discovery MP4 state excluding ROS and OSARS features,RPS13
+Frozen discovery MP4 state excluding ROS and OSARS features,RPS21
+Frozen discovery MP4 state excluding ROS and OSARS features,RPS5
+Frozen discovery MP4 state excluding ROS and OSARS features,SAA4
+Frozen discovery MP4 state excluding ROS and OSARS features,SERPINA3
+Frozen discovery MP4 state excluding ROS and OSARS features,SERPINC1
+Frozen discovery MP4 state excluding ROS and OSARS features,SERPING1
+Frozen discovery MP4 state excluding ROS and OSARS features,TF
+Frozen discovery MP4 state excluding ROS and OSARS features,TTR
+Hallmark ROS positive control,ABCC1
+Hallmark ROS positive control,ATOX1
+Hallmark ROS positive control,CAT
+Hallmark ROS positive control,CDKN2D
+Hallmark ROS positive control,EGLN2
+Hallmark ROS positive control,ERCC2
+Hallmark ROS positive control,FES
+Hallmark ROS positive control,FTL
+Hallmark ROS positive control,G6PD
+Hallmark ROS positive control,GCLC
+Hallmark ROS positive control,GCLM
+Hallmark ROS positive control,GLRX
+Hallmark ROS positive control,GLRX2
+Hallmark ROS positive control,GPX3
+Hallmark ROS positive control,GPX4
+Hallmark ROS positive control,GSR
+Hallmark ROS positive control,HHEX
+Hallmark ROS positive control,HMOX2
+Hallmark ROS positive control,IPCEF1
+Hallmark ROS positive control,JUNB
+Hallmark ROS positive control,LAMTOR5
+Hallmark ROS positive control,LSP1
+Hallmark ROS positive control,MBP
+Hallmark ROS positive control,MGST1
+Hallmark ROS positive control,MPO
+Hallmark ROS positive control,MSRA
+Hallmark ROS positive control,NDUFA6
+Hallmark ROS positive control,NDUFB4
+Hallmark ROS positive control,NDUFS2
+Hallmark ROS positive control,NQO1
+Hallmark ROS positive control,OXSR1
+Hallmark ROS positive control,PDLIM1
+Hallmark ROS positive control,PFKP
+Hallmark ROS positive control,PRDX1
+Hallmark ROS positive control,PRDX2
+Hallmark ROS positive control,PRDX4
+Hallmark ROS positive control,PRDX6
+Hallmark ROS positive control,PRNP
+Hallmark ROS positive control,PTPA
+Hallmark ROS positive control,SBNO2
+Hallmark ROS positive control,SCAF4
+Hallmark ROS positive control,SELENOS
+Hallmark ROS positive control,SOD1
+Hallmark ROS positive control,SOD2
+Hallmark ROS positive control,SRXN1
+Hallmark ROS positive control,STK25
+Hallmark ROS positive control,TXN
+Hallmark ROS positive control,TXNRD1
+Hallmark ROS positive control,TXNRD2

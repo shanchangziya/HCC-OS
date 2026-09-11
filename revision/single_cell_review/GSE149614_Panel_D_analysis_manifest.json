@@ -1,0 +1,44 @@
+{
+  "analysis": "GSE149614 custom GeneNMF-metaprogram GSVA and selected-program ORA",
+  "generated": "2026-09-06 15:29:00 CST",
+  "input_cells": 13691,
+  "patients": 10,
+  "pseudobulks": 50,
+  "grouping": "five equal-frequency OS-composite strata within each patient",
+  "normalization": "log2(CPM + 1), CPM denominator from summed frozen full-transcriptome nCount_RNA",
+  "GSVA": {
+    "package_version": "1.50.0",
+    "method": "gsva",
+    "kcdf": "Gaussian",
+    "min_size": 10,
+    "max_size": 500,
+    "primary_gene_sets": "GeneNMF consensus genes after removal of the 49 frozen Hallmark ROS genes",
+    "sensitivity_gene_sets": "full GeneNMF consensus genes"
+  },
+  "selection": {
+    "selected_metaprogram": "MP1",
+    "primary_gene_set_variant": "OS-gene-excluded",
+    "primary_selection_metric": "largest mean within-patient Spearman correlation between OS composite and GSVA score across five OS strata",
+    "n_patients": 10,
+    "primary_rank": 1,
+    "primary_mean_patient_spearman": 0.49,
+    "primary_spearman_lower_95CI": 0.0549307220912434,
+    "primary_spearman_upper_95CI": 0.925069277908756,
+    "primary_spearman_BH_FDR": 0.125236087455304,
+    "primary_mean_delta_Q5_Q1": 0.393662841906765,
+    "primary_lower_95CI": -0.134887017088307,
+    "primary_upper_95CI": 0.922212700901838,
+    "primary_delta_BH_FDR": 0.221395761411876,
+    "full_gene_set_top_metaprogram": "MP1",
+    "rank_concordant_with_full_gene_set": true
+  },
+  "enrichment": {
+    "method": "one-sided hypergeometric ORA",
+    "resources": ["MSigDB Hallmark", "MSigDB Reactome"],
+    "msigdbr_version": "26.1.0",
+    "database_version": "2026.1.Hs",
+    "background_n": 2000,
+    "query_n": 133,
+    "correction": "BH across all tested Hallmark and Reactome terms"
+  }
+}

@@ -1,0 +1,10 @@
+"metric","value"
+"Frozen OSARS feature count",128
+"Frozen OSARS features overlapping HALLMARK ROS",3
+"Discovery positive marker count",2185
+"NQO1 average-log2FC rank among discovery markers",1
+"NQO1 detection-gap rank among discovery markers",1
+"NQO1 adjusted-P rank among discovery markers",1
+"NQO1 GBM relative-importance rank among frozen OSARS features",56
+"NQO1 membership in frozen discovery MP4",0
+"Verified PDC000198 tumor-adjacent protein pairs",159

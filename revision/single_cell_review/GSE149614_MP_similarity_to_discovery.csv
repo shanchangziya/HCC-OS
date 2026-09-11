@@ -1,0 +1,17 @@
+discovery_program,validation_program,n_discovery,n_validation,overlap,raw_measured_gene_jaccard,Fisher_P_eligible_background,background_n,background_definition,n_discovery_raw_measured,n_validation_raw_measured,overlap_raw_measured,eligible_background_jaccard,jaccard_unrestricted_gene_sets,BH_FDR_all_16_comparisons,similarity_rank_within_discovery,closest_validation_program_for_discovery_program,selected_for_panel_D
+MP1,MP1,8,107,7,0.0648148148148148,7.936294284945591e-09,2000,"Genes actually eligible for validation NMF, from all saved W row names",8,107,7,0.0648148148148148,0.0648148148148148,3.17451771397824e-08,1,True,False
+MP1,MP2,8,104,2,0.0181818181818182,0.0610792984211013,2000,"Genes actually eligible for validation NMF, from all saved W row names",8,104,2,0.0181818181818182,0.0181818181818182,0.139609824962517,2,False,False
+MP1,MP3,8,22,0,0.0,1.0,2000,"Genes actually eligible for validation NMF, from all saved W row names",8,22,0,0.0,0.0,1.0,3,False,False
+MP1,MP4,8,56,0,0.0,1.0,2000,"Genes actually eligible for validation NMF, from all saved W row names",8,56,0,0.0,0.0,1.0,4,False,False
+MP2,MP1,23,107,1,0.0073529411764705,0.719686037053529,2000,"Genes actually eligible for validation NMF, from all saved W row names",30,107,1,0.0077519379844961,0.0073529411764705,1.0,2,False,False
+MP2,MP2,23,104,0,0.0,1.0,2000,"Genes actually eligible for validation NMF, from all saved W row names",30,104,0,0.0,0.0,1.0,3,False,False
+MP2,MP3,23,22,0,0.0,1.0,2000,"Genes actually eligible for validation NMF, from all saved W row names",30,22,0,0.0,0.0,1.0,4,False,False
+MP2,MP4,23,56,20,0.303030303030303,3.36958521055249e-30,2000,"Genes actually eligible for validation NMF, from all saved W row names",30,56,20,0.338983050847458,0.303030303030303,2.69566816844199e-29,1,True,False
+MP3,MP1,51,107,10,0.0483091787439614,0.0002534892794967,2000,"Genes actually eligible for validation NMF, from all saved W row names",110,107,10,0.0675675675675676,0.0462962962962963,0.0008111656943894,1,True,False
+MP3,MP2,51,104,6,0.0288461538461538,0.0458907393843473,2000,"Genes actually eligible for validation NMF, from all saved W row names",110,104,6,0.0402684563758389,0.0276497695852535,0.122375305024926,2,False,False
+MP3,MP3,51,22,0,0.0,1.0,2000,"Genes actually eligible for validation NMF, from all saved W row names",110,22,0,0.0,0.0,1.0,3,False,False
+MP3,MP4,51,56,0,0.0,1.0,2000,"Genes actually eligible for validation NMF, from all saved W row names",110,56,0,0.0,0.0,1.0,4,False,False
+MP4,MP1,44,107,19,0.131034482758621,6.556320290389531e-14,2000,"Genes actually eligible for validation NMF, from all saved W row names",57,107,19,0.143939393939394,0.13013698630137,3.49670415487441e-13,2,False,False
+MP4,MP2,44,104,34,0.267716535433071,1.15704117334997e-37,2000,"Genes actually eligible for validation NMF, from all saved W row names",57,104,34,0.298245614035088,0.265625,1.85126587735994e-36,1,True,True
+MP4,MP3,44,22,0,0.0,1.0,2000,"Genes actually eligible for validation NMF, from all saved W row names",57,22,0,0.0,0.0,1.0,4,False,False
+MP4,MP4,44,56,1,0.0089285714285714,0.717310507896996,2000,"Genes actually eligible for validation NMF, from all saved W row names",57,56,1,0.0101010101010101,0.0088495575221238,1.0,3,False,False

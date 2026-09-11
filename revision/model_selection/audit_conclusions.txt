@@ -1,0 +1,9 @@
+1. 117 configurations all completed five-fold CV: Yes.
+2. Rank 1 in TCGA CV: StepCox[backward] + plsRcox.
+3. Is it the historical StepCox[forward] + GBM / GBM predictor family: No.
+4. Mean five-fold C-index: 0.701633.
+5. Fold stability: SD=0.069943, range=0.635838–0.797710; 存在较明显的fold间波动.
+6. Models with delta <0.01: 7.
+7. Clear superiority versus near-equivalent alternatives: 7 models lie within 0.01; multiple near-equivalent alternatives exist.
+8. Locked-model ICGC retrospective C-index: 0.629665 (95% CI 0.526949–0.732382).
+9. Change versus historical values: TCGA primary estimate changed from apparent 0.870494 to CV 0.701633 (not like-for-like); ICGC changed from 0.766423 to 0.629665.

@@ -1,0 +1,1 @@
+{biospecimenPerStudy(pdc_study_id:"PDC000198"){case_id case_submitter_id sample_id sample_submitter_id sample_type aliquot_id aliquot_submitter_id} study(pdc_study_id:"PDC000198"){study_name study_description pdc_study_id study_id}}

@@ -1,0 +1,8 @@
+"method","definition"
+"rank_module","Mean within-sample fractional expression rank of the fixed state genes"
+"mean_gene_z","Mean gene-wise z score across samples for the fixed state genes"
+"GSVA","GSVA score from the GSVA R package"
+"ssGSEA","Single-sample GSEA score from the GSVA R package"
+"PLAGE","PLAGE latent-factor score from the GSVA R package; sign oriented to the rank-module score"
+"GSVA_zscore","Gene-set z-score method from the GSVA R package"
+"PCA_PC1","First principal-component score across the fixed state genes; sign oriented to the rank-module score"
