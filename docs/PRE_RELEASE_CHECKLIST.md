@@ -1,9 +1,9 @@
 # Pre-release checklist
 
-## Completed in this local candidate
+## Completed preparation and upload
 
-- [x] Clone the current public HCC-OS repository into an isolated local candidate.
-- [x] Preserve the existing history and remote URL without committing or pushing.
+- [x] Clone the public HCC-OS repository into an isolated staging checkout.
+- [x] Preserve the existing history and use a normal fast-forward push only after explicit author approval.
 - [x] Add the current revision code while retaining historical scripts for provenance.
 - [x] Replace known personal workstation/server paths with portable configuration.
 - [x] Exclude virtual environments, caches, raw/large data, models, logs, and figures.
@@ -15,7 +15,7 @@
 - [x] Parse 85 R files, compile 58 Python files, validate 2 shell scripts, parse the citation/requirements files, and pass `git diff --check`.
 - [x] Generate `docs/CODE_INVENTORY.csv` and `checksums/code_sha256.txt` for all 145 code files.
 
-## Author decisions required before upload
+## Remaining author decisions before final release
 
 - [x] Update the crosswalk to six main figures and move the former Figure 7 NQO1 analysis to the supplementary section.
 - [ ] Confirm that the six-main-figure map matches the final rewritten manuscript.
@@ -26,15 +26,17 @@
 - [ ] Verify author order, spelling, affiliations/ORCIDs, manuscript title, journal citation, and DOI in `CITATION.cff`.
 - [ ] Decide whether to publish frozen model objects separately (for example, a DOI-bearing archive) and document their checksums/access terms.
 
-## Verification required before upload
+## Verification required before final archival release
 
 - [ ] Run all retained primary stages in clean R/Python environments from approved inputs.
 - [ ] Compare regenerated numerical outputs and figure-source tables against frozen hashes/tolerances.
 - [ ] Review `git diff` and the full untracked-file list manually.
 - [ ] Replace the pre-release `LICENSE` notice only after the license decision.
-- [ ] Commit and push only after explicit author approval.
+- [x] Commit and push only after explicit author approval.
 
 ## Upload boundary
 
-Preparation of this directory does not authorize a commit, force-push, release,
-or GitHub upload. Those actions are intentionally left for a separate confirmed step.
+The 12 September 2026 snapshot was committed and pushed to `main` only after
+explicit author approval, using a normal fast-forward update. This upload does
+not by itself designate a final archival release; later release changes remain
+separate confirmed steps.

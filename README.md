@@ -4,10 +4,10 @@ Code supporting the study **“A machine learning-driven framework integrating
 an oxidative stress-associated risk signature for prognostic stratification
 and therapy-response prediction in hepatocellular carcinoma.”**
 
-> **Pre-release review candidate (11 September 2026).** This local package has
-> been prepared for author review. It has not been committed or pushed. The
-> six-main-figure revision map is provisional until the revised manuscript and
-> supplementary numbering are finalized.
+> **Pre-release code snapshot (12 September 2026).** This repository contains
+> the author-approved code upload for the current revision. The six-main-figure
+> map remains provisional until the revised manuscript and supplementary
+> numbering are finalized.
 
 ## Repository map
 
