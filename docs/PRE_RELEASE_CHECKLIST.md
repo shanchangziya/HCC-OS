@@ -24,7 +24,8 @@
 - [ ] Approve every tracked derived CSV/JSON/TXT file for redistribution under its source-data terms.
 - [ ] Choose a project-level license compatible with the GPL-3.0-only adapted GeneNMF script, or replace that script with a dependency call and re-audit licensing.
 - [ ] Verify author order, spelling, affiliations/ORCIDs, manuscript title, journal citation, and DOI in `CITATION.cff`.
-- [ ] Decide whether to publish frozen model objects separately (for example, a DOI-bearing archive) and document their checksums/access terms.
+- [x] Publish the author-approved inference parameters of the 128-gene manuscript GBM with its checksum and scoring examples. See [Manuscript OSARS](../revision/manuscript_osars128/README.md).
+- [ ] Decide separately on archiving other frozen models or full training objects.
 
 ## Verification required before final archival release
 

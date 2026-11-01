@@ -23,18 +23,20 @@ uses its tree splits and terminal-node values.
 
 ## Score the frozen model
 
-The public checkout includes the scoring scripts and example profiles. To
-calculate scores you also need the original trusted `StepCox_GBM_model_object.Rdata`
-(SHA-256 `a48c7de11e6e39b03bf86820f5816c98ee086e98fe272fafe494dcd32689c121`)
-or its three-file scoring export, held separately by the authors. From this directory, run:
+Download the [scoring bundle](https://github.com/shanchangziya/HCC-OS/raw/refs/heads/main/revision/manuscript_osars128/OSARS128_reviewer_scoring_bundle.zip)
+or use the copy in this directory. It contains the frozen tree splits and leaf
+values, the ordered genes, a Python scorer, and two synthetic profiles with
+expected scores. The ZIP SHA-256 is
+`6dfb1364d9dba971847401d8c72ab3a3d1277aa4c41a4cebfaff7d7f12ce400d`.
+With Python 3, run:
 
 ```sh
-Rscript --vanilla export_frozen_model.R /path/to/StepCox_GBM_model_object.Rdata frozen_osars128
+python3 -m zipfile -e OSARS128_reviewer_scoring_bundle.zip osars128-review
+cd osars128-review
 python3 score_osars.py frozen_osars128 example_input.csv example_scores.csv
 ```
 
-If you already have the scoring export, start with the Python command. Compare
-the two synthetic scores with [the expected output](example_expected.csv)
+Compare the two synthetic scores with [the expected output](example_expected.csv)
 using an absolute tolerance of 1e−12. The profile with all 128 gene values
 equal to 6 gives −0.4081560724653323. The corresponding R prediction on the
 original fitted object is:
@@ -42,6 +44,12 @@ original fitted object is:
 ```r
 predict(gbm_model$gbm_fit, newdata = x, n.trees = 1696, type = "link")
 ```
+
+For researchers who already have the original trusted R fitting archive,
+[the exporter](export_frozen_model.R) regenerates the three model parameter
+files from `StepCox_GBM_model_object.Rdata` (archive SHA-256
+`a48c7de11e6e39b03bf86820f5816c98ee086e98fe272fafe494dcd32689c121`).
+The scorer checks each parameter file's hash before prediction.
 
 For your own profiles, replace `example_input.csv` with a UTF-8 CSV
 containing one row per sample, a unique `sample_id`, and 128 named gene

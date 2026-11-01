@@ -12,6 +12,8 @@ patients (124 overall-survival events) and uses 1,696 trees to produce a
 continuous risk score. Higher scores indicate higher predicted risk.
 
 Start with the [model specification, gene order and scoring instructions](revision/manuscript_osars128/README.md).
+The [downloadable scoring bundle](https://github.com/shanchangziya/HCC-OS/raw/refs/heads/main/revision/manuscript_osars128/OSARS128_reviewer_scoring_bundle.zip)
+includes the trained tree parameters, a Python scorer and two synthetic examples.
 The [separate TCGA-only comparison](revision/model_selection/README.md)
 selected a 49-feature StepCox[backward] + plsRcox model for that analysis.
 The reported transcriptomic OSARS scores were calculated with the 128-gene GBM.
@@ -26,10 +28,9 @@ The reported transcriptomic OSARS scores were calculated with the 128-gene GBM.
 | `config/paths.example.env` | Names every external-data path expected by the portable scripts | Copy locally; never commit real paths |
 | `docs/` | Code inventory, figure crosswalk, data manifest, dependencies, limitations, and release checklist | Review before release |
 
-Large omics matrices, clinical tables, serialized R/Python objects, model
-checkpoints, whole-slide images, and generated figures are intentionally not
-tracked. Small frozen gene definitions, formula tables, and audit resources
-needed to interpret the code are included.
+The repository provides the manuscript GBM scoring export, gene definitions,
+formula tables and audit resources. Large omics matrices, clinical tables,
+training workspaces, whole-slide images and generated figures are held separately.
 
 ## Quick start
 

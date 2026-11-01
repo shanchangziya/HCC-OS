@@ -4,8 +4,9 @@ The repository is code-first. Raw data, controlled clinical data, large derived
 matrices, and serialized model objects are not distributed. This document tells
 reviewers exactly what must be re-staged and which small definitions are tracked.
 
-For the files needed to use the 128-gene StepCox[forward] + GBM manuscript
-model (1,696 trees), see [Manuscript OSARS](../revision/manuscript_osars128/README.md).
+The fitted inference parameters for the 128-gene StepCox[forward] + GBM
+manuscript model (1,696 trees) are distributed in the public scoring bundle
+described in [Manuscript OSARS](../revision/manuscript_osars128/README.md).
 The historical training objects below are inputs for audits and reanalysis.
 
 ## External and restricted inputs
