@@ -9,8 +9,9 @@ snapshot. File-level hashes are generated in `docs/CODE_INVENTORY.csv`.
 |---|---|---|
 | `revision/single_cell/` | Discovery-definition audit, GSE149614 atlas, frozen program scoring, patient-level summaries, de novo NMF, and Figures 1–2 | Core |
 | `revision/single_cell_review/` | Independent GeneNMF refit, program correspondence, GSVA/ORA, and reviewer-focused panels | Core/sensitivity |
-| `revision/model_selection/` | Historical 117-model audit, leakage-controlled five-fold TCGA selection, model lock, and later ICGC evaluation | Core |
-| `revision/model_validation/` | Frozen-score audit, nested comparator strategy, signature benchmarking, survival/clinical analyses, assumptions, and Figures 3–4 | Core |
+| [Manuscript OSARS](../revision/manuscript_osars128/README.md) | Entry point for the manuscript's 128-gene StepCox[forward] + GBM model with 1,696 trees | Manuscript model |
+| `revision/model_selection/` | Separate TCGA-only comparison of 117 configurations; its selected 49-feature StepCox[backward] + plsRcox fit was subsequently evaluated in ICGC | Comparison |
+| `revision/model_validation/` | Frozen-score audit, eight-configuration nested comparison, published-signature benchmarking, and cohort survival/clinical analyses | Supporting |
 | `revision/osars_mp4_projection/` | Frozen MP4 projection, GSEA, and multi-method sensitivity | Supporting; negative-direction result |
 | `revision/bulk_biology/` | TCGA bulk pathway phenotype associated with frozen OSARS | Supporting |
 | `revision/osars_ros_correlation/` | Direct ROS–OSARS correlation figure | Supporting |
@@ -36,7 +37,7 @@ snapshot. File-level hashes are generated in `docs/CODE_INVENTORY.csv`.
 | `scripts/03_annotation_integration/` | Integrated annotation and QC | Retained for provenance |
 | `scripts/04_spatial_transcriptomics/` | Earlier spatial scoring/RCTD workflow | Superseded for current Figure 6 |
 | `scripts/05_bulk_deconvolution/` | Earlier BayesPrism analyses | Not used to reverse the negative MP4 projection result |
-| `scripts/06_prognostic_modeling/` | Historical Mime1 development and extraction | Audited/superseded by 117-model revision code |
+| `scripts/06_prognostic_modeling/` | Original Mime1 development and extraction | Historical provenance for the manuscript GBM; see [Manuscript OSARS](../revision/manuscript_osars128/README.md) |
 | `scripts/07_wsi_pathology/` | Historical WSI feature/prognosis workflow | Superseded by corrected pathology modules |
 | `scripts/08_functional_analysis/` | Historical tumor, CellChat, and virtual-knockout analyses | Legacy only; not current mechanistic evidence |
 

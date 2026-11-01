@@ -1,14 +1,16 @@
 # Figure-to-code crosswalk
 
-This crosswalk follows the current six-main-figure revision. The former Figure
-7 NQO1 analysis is now supplementary. Final supplementary numbering still
-requires author review.
+For the prognostic model used in the manuscript, start with
+[Manuscript OSARS](../revision/manuscript_osars128/README.md). The model is
+StepCox[forward] + GBM, with 128 input genes and 1,696 trees. Other modules
+below include supporting analyses and earlier figure layouts; their local
+panel numbers do not always match the submission.
 
 | Figure | Current content | Primary code | Important boundary |
 |---|---|---|---|
 | Figure 1 | Discovery object, oxidative-stress definition, historical versus top-20% labels | `revision/single_cell/scripts/00_probe_objects.R`, `02_validate_frozen_programs.R`, `03_summarize_validation.py`, `07_plot_discovery_definition.py` | The saved object contains epithelial cells from 11 tissue samples, not 11 verified independent patients or a purely confirmed malignant set |
 | Figure 2 | Independent GSE149614 atlas, patient-level tests, technical sensitivity, and NMF correspondence | `revision/single_cell/scripts/01_build_validation_atlas.py` through `06_recompute_NMF_overlap.R`; reviewer refinements in `revision/single_cell_review/scripts/` | The prespecified global-composite primary test was not significant; within-patient UCell is a sensitivity |
-| Figure 3 | OSARS/program direction, 117-model audit and TCGA-only selection, published-signature comparison | `revision/model_validation/scripts/04_nested_tcga_cv.py`, `05_prepare_scores_and_metrics.py`, `07_nested_and_incremental_summaries.py`; `revision/model_selection/scripts/`; published-comparator submodule; historical three-cohort provenance in `revision/model_validation/references/historical_all_cohort_model_building.R` | TCGA historical C-index is apparent; ICGC was historically consulted; OSARS–MP4 is negative in both bulk cohorts |
+| Figure 3 | OSARS development, cohort discrimination and survival | [Manuscript OSARS](../revision/manuscript_osars128/README.md); supporting score and survival analyses in `revision/model_validation/` | TCGA development performance is apparent; ICGC was consulted during development. The 49-feature TCGA-only PLS-Cox fit in `revision/model_selection/` is a separate comparison. The earlier nested analysis in `revision/model_validation/scripts/04_nested_tcga_cv.py` uses eight configurations. |
 | Figure 4 | TCGA/ICGC/PDC survival, adjusted HRs, assumptions, and clinical discrimination increments | `revision/model_validation/scripts/05_prepare_scores_and_metrics.py` through `12_reviewer_grade_and_event_audit.py`; stage/grade sensitivity modules | PDC uses a 123-protein correlation-weighted surrogate, not the mRNA GBM; HRs require PH/nonlinearity caveats |
 | Figure 5 | Inferred immune features, TIDE scores, and predicted ICB response | `revision/immune_therapy/scripts/export_r_objects.R`, `prepare_data.py`, `verify_source_labels.py`, `plot_panels.py`, `assemble_and_qc.py` | TIDE is predictive only; CIBERSORT fit sensitivity is weak/unbalanced; treatment cohorts are exploratory contexts |
 | Figure 6 | Four-section spatial abundance associations | `revision/spatial_association/upstream_scripts/`, `scripts/01_build_source_manifest.py`, `02_export_descriptive_spatial.py`, and plotting scripts | Section-level heterogeneity is descriptive; four sections are not automatically four verified patients; no communication or causal claim |

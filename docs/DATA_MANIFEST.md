@@ -4,6 +4,10 @@ The repository is code-first. Raw data, controlled clinical data, large derived
 matrices, and serialized model objects are not distributed. This document tells
 reviewers exactly what must be re-staged and which small definitions are tracked.
 
+For the files needed to use the 128-gene StepCox[forward] + GBM manuscript
+model (1,696 trees), see [Manuscript OSARS](../revision/manuscript_osars128/README.md).
+The historical training objects below are inputs for audits and reanalysis.
+
 ## External and restricted inputs
 
 | Analysis | Expected source | Configuration | Repository policy |
@@ -11,7 +15,7 @@ reviewers exactly what must be re-staged and which small definitions are tracked
 | Discovery scRNA-seq | Archived discovery root containing `05osnmf.Rdata` and related frozen objects (study accession GSE202642) | `HCC_OS_DISCOVERY_ROOT` | Not bundled; regenerate from accession/source workflow where permitted |
 | Independent scRNA-seq | GSE149614 fresh count matrix and updated metadata; intermediate Seurat RDS | `HCC_OS_GSE149614_COUNTS`, `HCC_OS_GSE149614_METADATA_CSV`, `HCC_OS_GSE149614_METADATA`, `HCC_OS_GSE149614_RDS` | Public-source downloads and large derived objects are not bundled |
 | Historical OSARS objects | `QWEN0208_no_GSE14520.Rdata`, `res_no_GSE14520.Rdata`, `StepCox_GBM_model_object.Rdata` | `HCC_OS_DISCOVERY_ROOT`, `HCC_OS_FROZEN_RESULT` | Not bundled; required for audit/extraction |
-| TCGA-only 117-model selection | Frozen TCGA expression and survival tables in an isolated input directory | `HCC_OS_MODEL_RAW_DIR` | Not bundled; ICGC files must be absent during TCGA model selection |
+| Separate TCGA-only comparison of 117 configurations (49-feature PLS-Cox fit) | Frozen TCGA expression and survival tables in an isolated input directory | `HCC_OS_MODEL_RAW_DIR` | Not bundled; ICGC files must be absent during TCGA model selection |
 | ICGC-LIRI | Archived expression/clinical objects and unfiltered FPKM matrix | `HCC_OS_EXTERNAL_DATA_ROOT`, `HCC_OS_ICGC_FPKM` | Not bundled; use according to ICGC access terms |
 | Model/clinical revision | Original project-level frozen score, clinical, ESTIMATE, and protein-surrogate tables | `HCC_OS_LEGACY_PROJECT_ROOT`, `HCC_OS_TCGA_CLINICAL_GRADE` | Not bundled; filenames are documented by module README files |
 | Immune/TIDE/treatment | Frozen Fig. 5 input directory and project-level treatment tables | `HCC_OS_IMMUNE_INPUT_DIR`, `HCC_OS_LEGACY_PROJECT_ROOT` | Large matrices and derived patient tables are not bundled |
@@ -29,7 +33,8 @@ permit formula-level review without exposing patient-level data:
 
 - Frozen 128-gene, 448-candidate-gene, pseudobulk, Hallmark ROS, and NMF gene lists.
 - NQO1 discovery marker and frozen variable-importance audit tables.
-- The complete 117-configuration grid and explicit locked PLS-Cox formula parameters.
+- The 117-configuration comparison grid and formula parameters for its 49-feature
+  StepCox[backward] + plsRcox fit. These parameters belong to the TCGA-only comparison.
 - Published-signature coefficient/formula audit tables.
 - Small reviewer-facing GeneNMF program/pathway summaries.
 - Frozen pathology model specification, PDC GraphQL query text, and public-source hashes.

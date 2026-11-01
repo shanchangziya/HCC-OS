@@ -4,10 +4,17 @@ Code supporting the study **“A machine learning-driven framework integrating
 an oxidative stress-associated risk signature for prognostic stratification
 and therapy-response prediction in hepatocellular carcinoma.”**
 
-> **Pre-release code snapshot (12 September 2026).** This repository contains
-> the author-approved code upload for the current revision. The six-main-figure
-> map remains provisional until the revised manuscript and supplementary
-> numbering are finalized.
+## OSARS used in the manuscript
+
+The transcriptomic OSARS in Figure 3 and Supplementary Data 4 is the
+**128-gene StepCox[forward] + GBM**. The model was fitted in 343 TCGA-LIHC
+patients (124 overall-survival events) and uses 1,696 trees to produce a
+continuous risk score. Higher scores indicate higher predicted risk.
+
+Start with the [model specification, gene order and scoring instructions](revision/manuscript_osars128/README.md).
+The [separate TCGA-only comparison](revision/model_selection/README.md)
+selected a 49-feature StepCox[backward] + plsRcox model for that analysis.
+The reported transcriptomic OSARS scores were calculated with the 128-gene GBM.
 
 ## Repository map
 

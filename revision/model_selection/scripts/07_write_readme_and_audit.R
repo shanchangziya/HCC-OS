@@ -69,7 +69,9 @@ near_table <- c(
 )
 
 readme <- c(
-  "# OSARS 117-configuration TCGA-only model-selection audit",
+  "# TCGA five-fold comparison of 117 configurations",
+  "",
+  "The manuscript OSARS is the [128-gene StepCox[forward] + GBM model](../manuscript_osars128/README.md) with 1,696 boosting trees. This directory records a separate TCGA five-fold comparison of 117 configurations. Its ranking selected the 49-feature PLS-Cox predictor described below. The additional nested analysis reported in Supplementary Data 5 is separate from this comparison.",
   "",
   "## Scope and headline result",
   "",
@@ -96,11 +98,11 @@ readme <- c(
     icgc_transfer_time_utc, "."
   ),
   "",
-  "## Revised leakage-controlled workflow",
+  "## Five-fold comparison workflow",
   "",
   "1. A fixed master seed (`5201314`) generated event-stratified 5-fold assignments. Held-out folds contain 67–69 patients and event fractions of 35.8%–36.2%.",
   "2. For each outer fold, 1st/99th percentile winsorization bounds, mean-imputation values, and near-zero-variance filtering were estimated using only the 80% training partition and then applied unchanged to its held-out partition.",
-  "3. Univariable Cox screening (`P < 0.01`) was repeated independently inside each training partition. The five folds retained ",
+  "3. Univariable Cox screening (`P < 0.01`) was repeated independently inside each training partition. The five folds retained",
   paste0("   ", paste(feature_folds$genes_after_univariable_cox_p_lt_0_01, collapse = ", "), " genes, respectively."),
   "4. All model fitting and all algorithm-specific tuning (10-fold internal tuning where used by the frozen Mime implementation) used only that outer training partition.",
   "5. Risk-score orientation was determined from training-partition predictions only and then fixed before scoring the held-out patients. Held-out outcomes were used only to calculate Harrell's C-index.",
@@ -110,7 +112,7 @@ readme <- c(
   "",
   "## Leakage audit",
   "",
-  "| Potential leakage | Revised analysis |",
+  "| Potential leakage | Five-fold comparison |",
   "|---|---|",
   "| Univariable Cox on all TCGA before CV | Prevented; repeated in each outer training fold |",
   "| Global TCGA winsorization/imputation before CV | Prevented; parameters estimated in each outer training fold |",
@@ -121,11 +123,11 @@ readme <- c(
   "",
   "No external cohort path or object is referenced by the fold-preparation, fold-fitting, aggregation/selection, or complete-TCGA locking scripts.",
   "",
-  "## Original versus revised workflow",
+  "## Manuscript development versus five-fold comparison",
   "",
-  "| Item | Historical workflow | Revised workflow |",
+  "| Item | Original OSARS development | Separate five-fold comparison |",
   "|---|---|---|",
-  "| Configuration count | Manuscript stated 101; frozen object contains 117 | Audited and reports all 117 |",
+  "| Configuration count | Earlier draft stated 101; frozen object contains 117 | Audited and reports all 117 |",
   "| Univariable screen | Complete TCGA before the reported multi-model analysis | Repeated inside each outer training fold |",
   "| Expression capping/imputation | Estimated cohort-wise before model evaluation | Estimated only in each TCGA training fold; full-TCGA values locked for later use |",
   "| Algorithm selection | ICGC results were available and used when prioritising the historical StepCox[forward] + GBM/GBM predictor | Mean 5-fold CV C-index within TCGA only |",
@@ -148,21 +150,23 @@ readme <- c(
   "",
   near_table,
   "",
-  "## Final locked model",
+  "## Predictor selected in the comparison",
   "",
   paste0("- Configuration: `", selected$configuration, "`."),
   paste0("- Mean 5-fold C-index within TCGA: ", sprintf("%.4f", selected$mean_Cindex), "."),
   paste0("- Fold values: ", paste(sprintf("%.4f", fold_values), collapse = ", "), "."),
   paste0("- Fold SD: ", sprintf("%.4f", selected$SD), "; range ", sprintf("%.4f", fold_range[1]), "–", sprintf("%.4f", fold_range[2]), " (", stability_text, ")."),
   paste0("- Complete-TCGA univariable genes: ", final_features$genes_after_univariable_cox_p_lt_0_01, "."),
-  paste0("- Final model input features: ", final_features$final_model_input_features, "."),
-  "- Reproducible prediction is implemented in `scripts/predict_locked_model.R`; preprocessing vectors, feature order, model object, parameters, and risk orientation are all stored in `data/processed/final_OSARS_model_locked.rds`.",
-  "- The explicit nine-component PLS-Cox calculation and its parameter tables are exported in `final_model_risk_formula.txt` and `data/processed/final_model_*`. These reproduce serialized predictions to machine precision without changing the model hash.",
+  paste0("- Comparison model input features: ", final_features$final_model_input_features, "."),
+  "- Scoring for the selected comparison predictor is implemented in `scripts/predict_locked_model.R`; preprocessing vectors, feature order, model object, parameters, and risk orientation are all stored in `data/processed/final_OSARS_model_locked.rds`.",
+  "- The explicit nine-component PLS-Cox calculation and its parameter tables are exported in `comparison_model_risk_formula.txt` and `data/processed/final_model_*`. These reproduce serialized predictions to machine precision without changing the model hash.",
+  "",
+  "The archived filename `final_OSARS_model_locked.rds` and its SHA256 belong to the comparison predictor. With the archived object and cohort inputs staged, run `Rscript scripts/predict_locked_model.R expression.csv comparison_scores.csv` for its scores.",
   "",
   "## ICGC retrospective external evaluation",
   "",
   paste0(
-    "The locked model yielded a Harrell C-index of **", sprintf("%.4f", icgc$Cindex),
+    "The selected comparison predictor yielded a Harrell C-index of **", sprintf("%.4f", icgc$Cindex),
     "** (95% CI ", sprintf("%.4f", icgc$CI95_low), "–", sprintf("%.4f", icgc$CI95_high),
     "; n=", icgc$n_patients, ", events=", icgc$n_events, ")."
   ),
@@ -171,19 +175,19 @@ readme <- c(
   "## Interpretation of performance change",
   "",
   paste0(
-    "The historical TCGA value (0.8705) was an apparent in-sample C-index, whereas the revised primary TCGA estimate is held-out-fold CV performance (",
-    sprintf("%.4f", selected$mean_Cindex), "). Their difference (", sprintf("%+.4f", selected$mean_Cindex - old_tcga),
-    ") is not a like-for-like degradation; it mainly reflects removal of resubstitution optimism and fold-wise repetition of feature selection."
+    "The manuscript GBM had an apparent TCGA C-index of 0.8705, whereas the selected comparison predictor had a mean five-fold C-index of ",
+    sprintf("%.4f", selected$mean_Cindex), ". Their difference (", sprintf("%+.4f", selected$mean_Cindex - old_tcga),
+    ") combines changes in the predictor and in its evaluation."
   ),
   paste0(
-    "The historical ICGC C-index was 0.7664 and the locked revised model gives ", sprintf("%.4f", icgc$Cindex),
-    " (difference ", sprintf("%+.4f", icgc$Cindex - old_icgc), "). This is a retrospective comparison because ICGC had been examined historically."
+    "The ICGC C-index was 0.7664 for the manuscript GBM and ", sprintf("%.4f", icgc$Cindex),
+    " for the comparison predictor (difference ", sprintf("%+.4f", icgc$Cindex - old_icgc), "). This is a retrospective comparison because ICGC had been examined historically."
   ),
   paste0("For reference only, the refitted locked model's complete-TCGA apparent C-index is ", sprintf("%.4f", tcga_apparent), "."),
   "",
   "## Statistical limitation",
   "",
-  "The requested five outer folds provide honest held-out predictions for every individual configuration and prevent fold-level feature/tuning leakage. However, the same set of five fold estimates is used to rank 117 configurations and to quote the selected configuration's mean; therefore some winner's-curse/model-selection optimism can remain. These values are explicitly called **internal cross-validation/model-selection performance**, not independent test performance. A fully nested outer assessment of the entire 117-configuration selection strategy would be needed for an unbiased post-selection performance estimate.",
+  "The requested five outer folds provide honest held-out predictions for every individual configuration and prevent fold-level feature/tuning leakage. However, the same set of five fold estimates is used to rank 117 configurations and to quote the selected configuration's mean; therefore some winner's-curse/model-selection optimism can remain. These values are explicitly called **internal cross-validation/model-selection performance**, not independent test performance. The additional nested assessment reported in Supplementary Data 5 evaluates the configuration-selection procedure separately.",
   "",
   "## Software fidelity and recorded deviations",
   "",
@@ -201,17 +205,20 @@ readme <- c(
   "- `all_117_models_5fold_performance.csv`: ranked fold-level and summary C-indices, CI, completion, feature counts, and duplicate groups.",
   "- `cv_patient_predictions.csv`: long-format out-of-fold risk scores for every patient/configuration.",
   "- `feature_selection_by_fold.csv`: train-only preprocessing/univariable screening counts.",
-  "- `final_model_summary.txt`: locked algorithm, CV performance, parameters, and risk-score method.",
-  "- `final_model_risk_formula.txt` and `data/processed/final_model_*`: explicit preprocessing, PLS projection, Cox coefficients, and formula validation.",
+  "- `comparison_model_summary.txt`: locked algorithm, CV performance, parameters, and risk-score method.",
+  "- `comparison_model_risk_formula.txt` and `data/processed/final_model_*`: explicit preprocessing, PLS projection, Cox coefficients, and formula validation.",
   "- `ICGC_retrospective_evaluation.csv`: locked-model retrospective external result.",
   "- `data/processed/duplicate_predictor_audit.csv`: revised exact/rank-equivalent pairs.",
   "- `figures/`: 17-cm-wide combined and individual PDF/SVG/PNG panels.",
   "",
-  paste0("Generated: ", format(Sys.time(), "%Y-%m-%d %H:%M:%S %Z"))
+  paste0("Comparison results generated: ", format(Sys.time(), "%Y-%m-%d %H:%M:%S %Z"))
 )
 writeLines(readme, file.path(analysis_root, "README.md"))
 
 answers <- c(
+  "TCGA-ONLY FIVE-FOLD COMPARISON MODEL",
+  "The manuscript OSARS is documented in ../manuscript_osars128/README.md.",
+  "",
   paste0("1. 117 configurations all completed five-fold CV: ", ifelse(all_complete, "Yes", paste0("No; ", sum(performance$five_fold_predictions_complete), "/117 were complete")), "."),
   paste0("2. Rank 1 in TCGA CV: ", selected$configuration, "."),
   paste0("3. Is it the historical StepCox[forward] + GBM / GBM predictor family: ", ifelse(same_as_historical, "Yes", "No"), "."),
@@ -220,7 +227,7 @@ answers <- c(
   paste0("6. Models with delta <0.01: ", nrow(near), "."),
   paste0("7. Clear superiority versus near-equivalent alternatives: ", ifelse(nrow(near) == 1L, "Only the best lies within 0.01", paste0(nrow(near), " models lie within 0.01; multiple near-equivalent alternatives exist")), "."),
   paste0("8. Locked-model ICGC retrospective C-index: ", sprintf("%.6f", icgc$Cindex), " (95% CI ", sprintf("%.6f", icgc$CI95_low), "–", sprintf("%.6f", icgc$CI95_high), ")."),
-  paste0("9. Change versus historical values: TCGA primary estimate changed from apparent 0.870494 to CV ", sprintf("%.6f", selected$mean_Cindex), " (not like-for-like); ICGC changed from 0.766423 to ", sprintf("%.6f", icgc$Cindex), ".")
+  paste0("9. TCGA C-indices (manuscript GBM apparent and selected predictor five-fold): 0.870494 and ", sprintf("%.6f", selected$mean_Cindex), ". ICGC C-indices in the same order: 0.766423 and ", sprintf("%.6f", icgc$Cindex), ".")
 )
 writeLines(answers, file.path(analysis_root, "audit_conclusions.txt"))
 cat(paste(answers, collapse = "\n"), "\n")

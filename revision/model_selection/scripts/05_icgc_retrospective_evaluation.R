@@ -46,6 +46,7 @@ patient_scores <- data.frame(
   patient_id = as.character(icgc$ID),
   OS.time = as.numeric(icgc$OS.time),
   OS = as.integer(icgc$OS),
+  # Historical column name for the comparison score; retained for downstream readers.
   locked_OSARS_risk_score = risk,
   evaluation_label = "retrospective external evaluation",
   stringsAsFactors = FALSE
@@ -72,7 +73,7 @@ evaluation <- data.frame(
 )
 write.csv(evaluation, file.path(analysis_root, "ICGC_retrospective_evaluation.csv"), row.names = FALSE)
 
-summary_file <- file.path(analysis_root, "final_model_summary.txt")
+summary_file <- file.path(analysis_root, "comparison_model_summary.txt")
 summary_lines <- if (file.exists(summary_file)) readLines(summary_file, warn = FALSE) else character()
 summary_lines <- summary_lines[!grepl("^ICGC retrospective external evaluation", summary_lines)]
 summary_lines <- c(

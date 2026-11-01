@@ -95,7 +95,7 @@ validation_table <- do.call(rbind, validation_rows)
 write.csv(validation_table, file.path(processed_root, "final_model_formula_validation.csv"), row.names = FALSE)
 
 formula_lines <- c(
-  "EXPLICIT LOCKED PLS-COX RISK-SCORE CALCULATION",
+  "RISK SCORE FOR THE SELECTED PLS-COX COMPARISON MODEL",
   paste0("K = ", k, " latent components; orientation = ", bundle$orientation, "."),
   "For each locked model gene g, cap expression x_g at the stored TCGA q01/q99 bounds and replace missing values with the stored TCGA mean.",
   "Standardize each processed gene: z_g = (x_g - pls_center_g) / pls_scale_g.",
@@ -109,9 +109,9 @@ formula_lines <- c(
   ),
   paste0("Locked model SHA256 (unchanged): ", expected_hash)
 )
-writeLines(formula_lines, file.path(analysis_root, "final_model_risk_formula.txt"))
+writeLines(formula_lines, file.path(analysis_root, "comparison_model_risk_formula.txt"))
 
-summary_file <- file.path(analysis_root, "final_model_summary.txt")
+summary_file <- file.path(analysis_root, "comparison_model_summary.txt")
 summary_lines <- readLines(summary_file, warn = FALSE)
 summary_lines <- summary_lines[!grepl("^Explicit PLS-Cox calculation:", summary_lines)]
 summary_lines <- c(
@@ -119,7 +119,7 @@ summary_lines <- c(
   paste0(
     "Explicit PLS-Cox calculation: K=", k,
     "; z_g=(processed x_g-center_g)/scale_g; t_k=sum_g(z_g*W_gk); ",
-    "risk=orientation*sum_k[beta_k*(t_k-reference_mean_k)]. See final_model_risk_formula.txt and the three parameter CSV files."
+    "risk=orientation*sum_k[beta_k*(t_k-reference_mean_k)]. See comparison_model_risk_formula.txt and the three parameter CSV files."
   )
 )
 writeLines(summary_lines, summary_file)

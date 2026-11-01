@@ -8,7 +8,13 @@ historical snapshot.
 `nqo1_prioritization/` and `protein_support/` now support supplementary
 material rather than a seventh main figure.
 
-Start with:
+[Manuscript OSARS](manuscript_osars128/README.md) is the starting point for the
+manuscript model: 128 genes, StepCox[forward] + GBM, 1,696 trees.
+`model_selection/` contains a separate TCGA-only comparison whose selected
+fit was a 49-feature PLS-Cox model. The earlier nested comparison in
+`model_validation/` evaluated eight configurations.
+
+Other entry points:
 
 - `../docs/FIGURE_CODE_MAP.md` for the figure-to-script crosswalk;
 - `../docs/DATA_MANIFEST.md` for external inputs and configuration variables;

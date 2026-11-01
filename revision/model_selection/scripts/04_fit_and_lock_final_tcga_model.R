@@ -51,6 +51,7 @@ model_input_features <- fit_result$input_features
 if (!all(model_input_features %in% names(model_data))) stop("Unable to reconstruct final model matrix")
 training_model_data <- model_data[, c("OS.time", "OS", model_input_features), drop = FALSE]
 
+# Preserve the archived object schema and label used to verify the PLS comparison lock.
 bundle <- list(
   model_name = "OSARS",
   model_status = "locked_after_TCGA_only_model_selection",
@@ -149,8 +150,8 @@ formula_text <- if (is.null(coef_vector)) {
 }
 
 summary_lines <- c(
-  "OSARS FINAL MODEL (LOCKED AFTER TCGA-ONLY SELECTION)",
-  paste0("Final algorithm/configuration: ", config$configuration),
+  "TCGA-ONLY FIVE-FOLD COMPARISON MODEL",
+  paste0("Selected comparison configuration: ", config$configuration),
   paste0("Selection metric: mean 5-fold cross-validation within TCGA = ", sprintf("%.6f", selected_perf$mean_Cindex)),
   paste0("Fold C-indices: ", paste(sprintf("%.6f", unlist(selected_perf[paste0("fold", 1:5, "_Cindex")])), collapse = ", ")),
   paste0("Fold SD: ", sprintf("%.6f", selected_perf$SD)),
@@ -159,15 +160,15 @@ summary_lines <- c(
   paste0("Selection rule: ", selection$selection_rule),
   paste0("Full-TCGA candidate genes: ", length(candidate_genes)),
   paste0("Full-TCGA genes after univariable Cox P < 0.01: ", length(screen$selected)),
-  paste0("Final model input features: ", length(model_input_features)),
+  paste0("Comparison model input features: ", length(model_input_features)),
   paste0("Parameters: ", fit_result$parameter_string),
   paste0("Risk-score calculation: ", formula_text),
-  paste0("Locked model: ", normalizePath(locked_file)),
+  "Locked model: data/processed/final_OSARS_model_locked.rds (comparison object)",
   paste0("Locked model SHA256: ", locked_hash),
   paste0("Prediction reproduction max absolute delta: ", format(max_prediction_delta, scientific = TRUE)),
   paste0("Complete-TCGA apparent C-index (descriptive only): ", sprintf("%.6f", harrell_c(clin$OS.time, clin$OS, reproduced_risk))),
   "No external cohort was opened by this script."
 )
-writeLines(summary_lines, file.path(analysis_root, "final_model_summary.txt"))
+writeLines(summary_lines, file.path(analysis_root, "comparison_model_summary.txt"))
 
 cat(paste(summary_lines, collapse = "\n"), "\n")

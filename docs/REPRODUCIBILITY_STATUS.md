@@ -5,8 +5,11 @@
 - Current revision scripts are collected under stable module paths.
 - Personal workstation/server paths have been replaced with relative paths,
   command-line arguments, or documented environment variables.
-- Small frozen gene definitions, the 117-configuration grid, explicit locked
-  PLS-Cox parameters, and formula audit tables are included.
+- [Manuscript OSARS](../revision/manuscript_osars128/README.md) documents the frozen
+  128-gene StepCox[forward] + GBM model with 1,696 trees.
+- The separate TCGA-only comparison retains its 117-configuration grid and
+  49-feature PLS-Cox formula. The earlier nested comparison in
+  `revision/model_validation/` evaluated eight configurations.
 - Raw data, large objects, generated outputs, environments, and caches are
   excluded by default.
 - Third-party Mime1 and GeneNMF source components are identified with license
@@ -40,9 +43,9 @@ This package preserves results that challenge the original narrative:
   is not supported.
 - The historical TCGA C-index is apparent. The frozen object contains 117, not
   101, model configurations, and ICGC had been consulted historically.
-- The revised TCGA-only five-fold selection chose StepCox[backward] + plsRcox;
-  its post-selection performance remains internal cross-validation, not an
-  untouched external test.
+- The separate TCGA-only five-fold comparison selected a 49-feature
+  StepCox[backward] + plsRcox fit. Its post-selection performance is internal
+  cross-validation. The manuscript reports the 128-gene GBM.
 - The PDC score is a correlation-weighted 123-protein surrogate and must not be
   described as direct deployment of the mRNA GBM.
 - TIDE outputs are predictions; the treatment-context analyses do not establish

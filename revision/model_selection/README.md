@@ -1,4 +1,6 @@
-# OSARS 117-configuration TCGA-only model-selection audit
+# TCGA five-fold comparison of 117 configurations
+
+The manuscript OSARS is the [128-gene StepCox[forward] + GBM model](../manuscript_osars128/README.md) with 1,696 boosting trees. This directory records a separate TCGA five-fold comparison of 117 configurations. Its ranking selected the 49-feature PLS-Cox predictor described below. The additional nested analysis reported in Supplementary Data 5 is separate from this comparison.
 
 ## Scope and headline result
 
@@ -16,7 +18,7 @@ ICGC-LIRI-JP was opened only after the TCGA-selected model had been refitted on 
 - Server pre-lock raw-input inventory: TCGA-LIHC_frozen_risks.csv	14916 bytes; TCGA_unclipped_448_expression.csv	2605255 bytes.
 - The TCGA development run was locked at 2026-09-07T14:42:10Z; the ICGC file was transferred into the isolated server workspace only afterwards, at 2026-09-07T14:42:48Z.
 
-## Revised leakage-controlled workflow
+## Five-fold comparison workflow
 
 1. A fixed master seed (`5201314`) generated event-stratified 5-fold assignments. Held-out folds contain 67–69 patients and event fractions of 35.8%–36.2%.
 2. For each outer fold, 1st/99th percentile winsorization bounds, mean-imputation values, and near-zero-variance filtering were estimated using only the 80% training partition and then applied unchanged to its held-out partition.
@@ -30,7 +32,7 @@ ICGC-LIRI-JP was opened only after the TCGA-selected model had been refitted on 
 
 ## Leakage audit
 
-| Potential leakage | Revised analysis |
+| Potential leakage | Five-fold comparison |
 |---|---|
 | Univariable Cox on all TCGA before CV | Prevented; repeated in each outer training fold |
 | Global TCGA winsorization/imputation before CV | Prevented; parameters estimated in each outer training fold |
@@ -41,11 +43,11 @@ ICGC-LIRI-JP was opened only after the TCGA-selected model had been refitted on 
 
 No external cohort path or object is referenced by the fold-preparation, fold-fitting, aggregation/selection, or complete-TCGA locking scripts.
 
-## Original versus revised workflow
+## Manuscript development versus five-fold comparison
 
-| Item | Historical workflow | Revised workflow |
+| Item | Original OSARS development | Separate five-fold comparison |
 |---|---|---|
-| Configuration count | Manuscript stated 101; frozen object contains 117 | Audited and reports all 117 |
+| Configuration count | Earlier draft stated 101; frozen object contains 117 | Audited and reports all 117 |
 | Univariable screen | Complete TCGA before the reported multi-model analysis | Repeated inside each outer training fold |
 | Expression capping/imputation | Estimated cohort-wise before model evaluation | Estimated only in each TCGA training fold; full-TCGA values locked for later use |
 | Algorithm selection | ICGC results were available and used when prioritising the historical StepCox[forward] + GBM/GBM predictor | Mean 5-fold CV C-index within TCGA only |
@@ -69,31 +71,33 @@ In the revised out-of-fold predictions, 55 exact or rank-equivalent pairs were d
 | 6 | StepCox[both] + GBM | 0.6950 | 0.0646 | 54.8 |  |
 | 7 | StepCox[backward] | 0.6922 | 0.0744 | 100.2 |  |
 
-## Final locked model
+## Predictor selected in the comparison
 
 - Configuration: `StepCox[backward] + plsRcox`.
 - Mean 5-fold C-index within TCGA: 0.7016.
 - Fold values: 0.6358, 0.6808, 0.6443, 0.7495, 0.7977.
 - Fold SD: 0.0699; range 0.6358–0.7977 (存在较明显的fold间波动).
 - Complete-TCGA univariable genes: 128.
-- Final model input features: 49.
-- Reproducible prediction is implemented in `scripts/predict_locked_model.R`; preprocessing vectors, feature order, model object, parameters, and risk orientation are all stored in `data/processed/final_OSARS_model_locked.rds`.
-- The explicit nine-component PLS-Cox calculation and its parameter tables are exported in `final_model_risk_formula.txt` and `data/processed/final_model_*`. These reproduce serialized predictions to machine precision without changing the model hash.
+- Comparison model input features: 49.
+- Scoring for the selected comparison predictor is implemented in `scripts/predict_locked_model.R`; preprocessing vectors, feature order, model object, parameters, and risk orientation are all stored in `data/processed/final_OSARS_model_locked.rds`.
+- The explicit nine-component PLS-Cox calculation and its parameter tables are exported in `comparison_model_risk_formula.txt` and `data/processed/final_model_*`. These reproduce serialized predictions to machine precision without changing the model hash.
+
+The archived filename `final_OSARS_model_locked.rds` and its SHA256 belong to the comparison predictor. With the archived object and cohort inputs staged, run `Rscript scripts/predict_locked_model.R expression.csv comparison_scores.csv` for its scores.
 
 ## ICGC retrospective external evaluation
 
-The locked model yielded a Harrell C-index of **0.6297** (95% CI 0.5269–0.7324; n=243, events=44).
+The selected comparison predictor yielded a Harrell C-index of **0.6297** (95% CI 0.5269–0.7324; n=243, events=44).
 No ICGC feature selection, algorithm selection, hyperparameter tuning, risk-direction selection, cutoff optimisation, or model modification was performed.
 
 ## Interpretation of performance change
 
-The historical TCGA value (0.8705) was an apparent in-sample C-index, whereas the revised primary TCGA estimate is held-out-fold CV performance (0.7016). Their difference (-0.1689) is not a like-for-like degradation; it mainly reflects removal of resubstitution optimism and fold-wise repetition of feature selection.
-The historical ICGC C-index was 0.7664 and the locked revised model gives 0.6297 (difference -0.1368). This is a retrospective comparison because ICGC had been examined historically.
+The manuscript GBM had an apparent TCGA C-index of 0.8705, whereas the selected comparison predictor had a mean five-fold C-index of 0.7016. Their difference (-0.1689) combines changes in the predictor and in its evaluation.
+The ICGC C-index was 0.7664 for the manuscript GBM and 0.6297 for the comparison predictor (difference -0.1368). This is a retrospective comparison because ICGC had been examined historically.
 For reference only, the refitted locked model's complete-TCGA apparent C-index is 0.8534.
 
 ## Statistical limitation
 
-The requested five outer folds provide honest held-out predictions for every individual configuration and prevent fold-level feature/tuning leakage. However, the same set of five fold estimates is used to rank 117 configurations and to quote the selected configuration's mean; therefore some winner's-curse/model-selection optimism can remain. These values are explicitly called **internal cross-validation/model-selection performance**, not independent test performance. A fully nested outer assessment of the entire 117-configuration selection strategy would be needed for an unbiased post-selection performance estimate.
+The requested five outer folds provide honest held-out predictions for every individual configuration and prevent fold-level feature/tuning leakage. However, the same set of five fold estimates is used to rank 117 configurations and to quote the selected configuration's mean; therefore some winner's-curse/model-selection optimism can remain. These values are explicitly called **internal cross-validation/model-selection performance**, not independent test performance. The additional nested assessment reported in Supplementary Data 5 evaluates the configuration-selection procedure separately.
 
 ## Software fidelity and recorded deviations
 
@@ -108,10 +112,10 @@ The requested five outer folds provide honest held-out predictions for every ind
 - `all_117_models_5fold_performance.csv`: ranked fold-level and summary C-indices, CI, completion, feature counts, and duplicate groups.
 - `cv_patient_predictions.csv`: long-format out-of-fold risk scores for every patient/configuration.
 - `feature_selection_by_fold.csv`: train-only preprocessing/univariable screening counts.
-- `final_model_summary.txt`: locked algorithm, CV performance, parameters, and risk-score method.
-- `final_model_risk_formula.txt` and `data/processed/final_model_*`: explicit preprocessing, PLS projection, Cox coefficients, and formula validation.
+- `comparison_model_summary.txt`: locked algorithm, CV performance, parameters, and risk-score method.
+- `comparison_model_risk_formula.txt` and `data/processed/final_model_*`: explicit preprocessing, PLS projection, Cox coefficients, and formula validation.
 - `ICGC_retrospective_evaluation.csv`: locked-model retrospective external result.
 - `data/processed/duplicate_predictor_audit.csv`: revised exact/rank-equivalent pairs.
 - `figures/`: 17-cm-wide combined and individual PDF/SVG/PNG panels.
 
-Generated: 2026-09-07 22:51:49 CST
+Comparison results generated: 2026-09-07 22:51:49 CST

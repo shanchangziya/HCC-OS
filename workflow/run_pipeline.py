@@ -14,6 +14,7 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
+MANUSCRIPT_MODEL_GUIDE = "revision/manuscript_osars128/README.md"
 
 
 @dataclass(frozen=True)
@@ -67,13 +68,13 @@ STAGES: dict[str, Stage] = {
         ("HCC_OS_DISCOVERY_ROOT", "HCC_OS_EXTERNAL_DATA_ROOT", "HCC_OS_ICGC_FPKM"),
     ),
     "model-selection-tcga": Stage(
-        "Run and lock all 117 configurations using TCGA only",
+        "Separate TCGA-only comparison of 117 configurations (49-feature PLS-Cox fit)",
         (("bash", "revision/model_selection/scripts/run_server_tcga_development.sh"),),
         ("HCC_OS_MODEL_RAW_DIR",),
         "The input directory must not contain ICGC files; this stage is intentionally separate from ICGC evaluation.",
     ),
     "model-selection-icgc": Stage(
-        "Evaluate the already locked TCGA-selected model retrospectively in ICGC",
+        "Evaluate the separate TCGA-selected 49-feature PLS-Cox comparison in ICGC",
         (
             (RS, "revision/model_selection/scripts/05_icgc_retrospective_evaluation.R"),
             (RS, "revision/model_selection/scripts/08_export_locked_plsrcox_formula.R"),
@@ -86,7 +87,7 @@ STAGES: dict[str, Stage] = {
         "Run only after the TCGA lock exists and the ICGC input has been staged.",
     ),
     "model-validation": Stage(
-        "Frozen score, survival, comparator, and clinical analyses (Figures 3-4)",
+        "Frozen score, survival, clinical analyses and an earlier eight-configuration nested comparison",
         (
             (RS, "revision/model_validation/scripts/11_frozen_model_audit.R"),
             (PY, "revision/model_validation/scripts/run_statistics.py"),
@@ -202,7 +203,7 @@ def structural_check() -> int:
             for token in resolved[1:]:
                 if token.startswith("revision/") and not (ROOT / token).is_file():
                     problems.append(f"{name}: entry file missing: {token}")
-    required_docs = ["docs/DATA_MANIFEST.md", "docs/FIGURE_CODE_MAP.md", "config/paths.example.env"]
+    required_docs = [MANUSCRIPT_MODEL_GUIDE, "docs/DATA_MANIFEST.md", "docs/FIGURE_CODE_MAP.md", "config/paths.example.env"]
     problems.extend(f"required file missing: {path}" for path in required_docs if not (ROOT / path).is_file())
     if problems:
         print("Preflight: FAIL")
@@ -230,7 +231,8 @@ def show_stage(name: str, execute: bool) -> int:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
+    model_guide = f"Manuscript OSARS (128-gene StepCox[forward] + GBM, 1,696 trees): {MANUSCRIPT_MODEL_GUIDE}"
+    parser = argparse.ArgumentParser(description=__doc__, epilog=model_guide)
     parser.add_argument("--list", action="store_true", help="List stages")
     parser.add_argument("--check", action="store_true", help="Check entry files and executables")
     parser.add_argument("--stage", choices=sorted(STAGES), help="Show or run one stage")
@@ -239,6 +241,8 @@ def main() -> int:
     if args.execute and not args.stage:
         parser.error("--execute requires --stage")
     if args.list:
+        print(model_guide)
+        print()
         for name, stage in STAGES.items():
             print(f"{name:24} {stage.description}")
     status = structural_check() if args.check else 0
